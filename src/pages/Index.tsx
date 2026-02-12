@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Truck, Gift, Leaf } from 'lucide-react';
+import { ArrowRight, Truck, Gift, Leaf, Heart, Sparkles, Star } from 'lucide-react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product, Category } from '@/types';
 import ProductCard from '@/components/shop/ProductCard';
 import heroImage from '@/assets/hero-flowers.jpg';
+import weddingImage from '@/assets/wedding-flowers.jpg';
+import ceremonialImage from '@/assets/ceremonial-flowers.jpg';
 
 export default function Index() {
   const [products] = useLocalStorage<Product[]>('adam-products', []);
@@ -35,6 +37,83 @@ export default function Index() {
             >
               Shop Collection <ArrowRight size={16} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Weddings & Ceremonies */}
+      <section className="py-20 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-14">
+            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-2">Special Occasions</p>
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground">Weddings & Ceremonies</h2>
+            <p className="text-muted-foreground mt-3 max-w-xl mx-auto">From intimate ceremonies to grand celebrations, we create breathtaking floral experiences tailored to your vision.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Wedding Card */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={weddingImage}
+                alt="Wedding floral arrangements"
+                className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="flex items-center gap-2 mb-2">
+                  <Heart size={18} className="text-secondary" />
+                  <span className="text-sm font-medium text-secondary tracking-wide uppercase">Weddings</span>
+                </div>
+                <h3 className="text-2xl font-serif font-semibold text-primary-foreground mb-2">Bridal & Wedding Florals</h3>
+                <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">
+                  Exquisite bridal bouquets, centerpieces, and venue decorations designed to make your special day unforgettable.
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-primary transition-colors"
+                >
+                  Request Consultation <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Ceremonial Card */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={ceremonialImage}
+                alt="Ceremonial flower decorations"
+                className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles size={18} className="text-secondary" />
+                  <span className="text-sm font-medium text-secondary tracking-wide uppercase">Ceremonies</span>
+                </div>
+                <h3 className="text-2xl font-serif font-semibold text-primary-foreground mb-2">Grand Ceremonial Designs</h3>
+                <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">
+                  Lavish floral installations for galas, anniversaries, corporate events, and religious ceremonies.
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-primary transition-colors"
+                >
+                  Get a Quote <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Strip */}
+      <section className="bg-primary text-primary-foreground py-6">
+        <div className="container">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-sm font-medium">
+            <div className="flex items-center gap-2"><Heart size={16} /> Wedding Packages</div>
+            <div className="flex items-center gap-2"><Star size={16} /> VIP Event Styling</div>
+            <div className="flex items-center gap-2"><Sparkles size={16} /> Custom Designs</div>
+            <div className="flex items-center gap-2"><Truck size={16} /> Same-Day Delivery</div>
           </div>
         </div>
       </section>

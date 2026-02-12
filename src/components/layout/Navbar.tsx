@@ -40,8 +40,8 @@ export default function Navbar() {
           <Link to="/cart" className="relative p-2 hover:text-primary transition-colors">
             <ShoppingBag size={22} />
             {itemCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
-                {itemCount}
+              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-bold shadow-sm animate-fade-in">
+                {itemCount > 99 ? '99+' : itemCount}
               </span>
             )}
           </Link>

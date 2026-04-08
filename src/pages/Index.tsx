@@ -3,6 +3,7 @@ import { ArrowRight, Truck, Gift, Leaf, Heart, Sparkles, Star } from 'lucide-rea
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product, Category, LandingContent } from '@/types';
 import { defaultLandingContent } from '@/data/defaultLandingContent';
+import { defaultProducts, defaultCategories } from '@/data/seed';
 import ProductCard from '@/components/shop/ProductCard';
 import heroImage from '@/assets/hero-flowers.jpg';
 import weddingImage from '@/assets/wedding-flowers.jpg';
@@ -12,8 +13,8 @@ const serviceIcons = [Heart, Star, Sparkles, Truck];
 const whyIcons = [Leaf, Gift, Truck];
 
 export default function Index() {
-  const [products] = useLocalStorage<Product[]>('adam-products', []);
-  const [categories] = useLocalStorage<Category[]>('adam-categories', []);
+  const [products] = useLocalStorage<Product[]>('adam-products', defaultProducts);
+  const [categories] = useLocalStorage<Category[]>('adam-categories', defaultCategories);
   const [content] = useLocalStorage<LandingContent>('adam-landing', defaultLandingContent);
   const featured = products.filter(p => p.featured).slice(0, 4);
 

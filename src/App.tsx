@@ -28,9 +28,8 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => (
 );
 
 const App = () => {
-  useEffect(() => {
-    initializeData();
-  }, []);
+  // Run synchronously before first render to ensure localStorage has seed data
+  initializeData();
 
   return (
     <QueryClientProvider client={queryClient}>

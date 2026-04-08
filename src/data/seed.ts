@@ -69,6 +69,7 @@ export const defaultProducts: Product[] = [
 ];
 
 export function initializeData() {
+  // Only seed if no data exists yet — never overwrite admin changes
   if (!localStorage.getItem('adam-categories')) {
     localStorage.setItem('adam-categories', JSON.stringify(defaultCategories));
   }

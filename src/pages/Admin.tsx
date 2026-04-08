@@ -39,8 +39,8 @@ type Tab = 'products' | 'categories' | 'orders' | 'landing';
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const [tab, setTab] = useState<Tab>('products');
-  const [products, setProducts] = useLocalStorage<Product[]>('adam-products', []);
-  const [categories, setCategories] = useLocalStorage<Category[]>('adam-categories', []);
+  const [products, setProducts] = useLocalStorage<Product[]>('adam-products', defaultProducts);
+  const [categories, setCategories] = useLocalStorage<Category[]>('adam-categories', defaultCategories);
   const [orders] = useLocalStorage<Order[]>('adam-orders', []);
   const [landingContent, setLandingContent] = useLocalStorage<LandingContent>('adam-landing', defaultLandingContent);
 

@@ -3,6 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product, Category, Order, LandingContent } from '@/types';
 import { defaultLandingContent } from '@/data/defaultLandingContent';
+import { defaultProducts, defaultCategories } from '@/data/seed';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -38,8 +39,8 @@ type Tab = 'products' | 'categories' | 'orders' | 'landing';
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const [tab, setTab] = useState<Tab>('products');
-  const [products, setProducts] = useLocalStorage<Product[]>('adam-products', []);
-  const [categories, setCategories] = useLocalStorage<Category[]>('adam-categories', []);
+  const [products, setProducts] = useLocalStorage<Product[]>('adam-products', defaultProducts);
+  const [categories, setCategories] = useLocalStorage<Category[]>('adam-categories', defaultCategories);
   const [orders] = useLocalStorage<Order[]>('adam-orders', []);
   const [landingContent, setLandingContent] = useLocalStorage<LandingContent>('adam-landing', defaultLandingContent);
 

@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+
 import { initializeData } from "@/data/seed";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -28,9 +28,8 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => (
 );
 
 const App = () => {
-  useEffect(() => {
-    initializeData();
-  }, []);
+  // Run synchronously before first render to ensure localStorage has seed data
+  initializeData();
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,13 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product, Category } from '@/types';
+import { defaultProducts, defaultCategories } from '@/data/seed';
 import ProductCard from '@/components/shop/ProductCard';
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get('category') || 'all';
-  const [products] = useLocalStorage<Product[]>('adam-products', []);
-  const [categories] = useLocalStorage<Category[]>('adam-categories', []);
+  const [products] = useLocalStorage<Product[]>('adam-products', defaultProducts);
+  const [categories] = useLocalStorage<Category[]>('adam-categories', defaultCategories);
 
   const filtered = activeCategory === 'all'
     ? products

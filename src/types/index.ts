@@ -35,3 +35,28 @@ export interface CustomerInfo {
   address: string;
   deliveryNote: string;
 }
+
+export interface LandingContent {
+  hero: {
+    title: string;
+    subtitle: string;
+    buttonText: string;
+    imageUrl: string;
+  };
+  weddings: {
+    sectionLabel: string;
+    sectionTitle: string;
+    sectionDescription: string;
+    weddingTitle: string;
+    weddingDescription: string;
+    weddingImageUrl: string;
+    ceremonialTitle: string;
+    ceremonialDescription: string;
+    ceremonialImageUrl: string;
+  };
+  services: string[];
+  whyChooseUs: {
+    title: string;
+    description: string;
+  }[];
+}

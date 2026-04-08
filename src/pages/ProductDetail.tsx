@@ -10,8 +10,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const [products] = useLocalStorage<Product[]>('adam-products', []);
-  const [categories] = useLocalStorage<Category[]>('adam-categories', []);
+  const [products] = useLocalStorage<Product[]>('adam-products', defaultProducts);
+  const [categories] = useLocalStorage<Category[]>('adam-categories', defaultCategories);
   const { addToCart } = useCart();
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
 

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -10,11 +10,12 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   });
 
-  // Listen for changes from other components using the same key
+  const isUpdating = useRef(false);
+
   useEffect(() => {
     const handleStorageChange = (e: Event) => {
       const customEvent = e as CustomEvent;
-      if (customEvent.detail?.key === key) {
+      if (customEvent.detail?.key === key && !isUpdating.current) {
         try {
           const item = window.localStorage.getItem(key);
           if (item) setStoredValue(JSON.parse(item));
@@ -32,8 +33,11 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     setStoredValue(prev => {
       const valueToStore = value instanceof Function ? value(prev) : value;
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      // Notify other components using the same key
-      window.dispatchEvent(new CustomEvent('local-storage-change', { detail: { key } }));
+      isUpdating.current = true;
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('local-storage-change', { detail: { key } }));
+        isUpdating.current = false;
+      }, 0);
       return valueToStore;
     });
   }, [key]);

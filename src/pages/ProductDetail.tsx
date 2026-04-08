@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useCart } from '@/hooks/useCart';
 import { Product, Category } from '@/types';
+import { defaultProducts, defaultCategories } from '@/data/seed';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 

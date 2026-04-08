@@ -3,6 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product, Category, Order, LandingContent } from '@/types';
 import { defaultLandingContent } from '@/data/defaultLandingContent';
+import { defaultProducts, defaultCategories } from '@/data/seed';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
